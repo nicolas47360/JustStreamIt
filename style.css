@@ -1,7 +1,17 @@
 body
 { background-color: black;
   color: white;
-
+  margin: 0;
+  padding: 0;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: content-box;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
 }
 
 .header
@@ -11,10 +21,62 @@ body
  height: 100px;
  }
 
-ul
+ nav ul
+ {
+ display: flex;
+ }
+
+nav li
+{
+ margin-right:250px;
+ }
+
+.best-movie{
+  display: flex;
+  }
+
+best-movie h2{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  }
+
+ /*
+ modal
+ */
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  color: black;
+  justify-content: center;
+  display: none;
+}
+
+.modal-wrapper
+{
+  width: 600px;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 20px;
+  background-color: white;
+}
+
+.title
 {
  text-align: center;
- display: flex;
- margin: auto;
- text-align: center
- }
+ font-size: 1.7em;
+}
+
+/*
+carousel */
+
+

@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Just stream it</title>
     <link rel="stylesheet" href="style.css">
+    <link rel='icon' type="image/x-icon" href="juststreamit.ico">
 
 </head>
 <body>
     <div class="header">
-
         <img src="juststreamit.png" alt="logo du site"/>
         <nav>
             <ul>
-                <li><a href="accueil.html">Accueil</a></li>
-                <li><a href="Catégories">Catégories</a> </li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html">Catégories</a> </li>
             </ul>
         </nav>
     </div>
-    <div class="best-movie">
-        <h1>Meilleur Film</h1>
 
-    </div>
+    <section>
+        <div id="best-imdb">
+            <h1 class="title">meilleur film</h1>
+            <div class="best-movie">
+                <img id="image-best" src="#" alt="photo de film">
+                <h2 class="title-best" id="title-best"></h2>
+                <p id ="best-description"></p>
+            </div>
 
-    <div class="best-rating">
-        <h1>Les films les mieux notés</h1>
-    </div>
+			<a href="#modal" class="js-modal">ouvrir la modal</a>
 
-    <div class="animation">
-        <h1>Films d'animation</h1>
-    </div>
+            <div id="modal" class="modal" aria-hidden="true" role="dialog">
+				<div class="modal-wrapper js-modal-stop">
+					<div id="information"></div>
+				<button class="js-modal-close" >X</button>
+				</div>
+			</div>
+	   </div>
+    </section>
 
-     <div class="Thriller">
-        <h1>Films à suspense</h1>
-    </div>
+    <section class="carousel-wrapper">
+					<article class="container">
+						<h1 class="title">Films les mieux notés</h1>
+						<div id="best-score"></div>
+					</article>
 
-    <div class="Acction">
-        <h1>Films d'action</h1>
-    </div>
+					<article class="container">
+						<h1 class="title">Animation</h1>
+						<div id="animation"></div>
+					</article>
 
+					<article class="container">
+						<h1 class="title">Thriller</h1>
+						<div id="thriller"></div>
+					</article>
+
+					<article class="container">
+						<h1 class="title">Action</h1>
+						<div id="action"></div>
+					</article>
+				</section>
+
+
+
+<script src="films.js" ></script>
 </body>
 </html>
+
