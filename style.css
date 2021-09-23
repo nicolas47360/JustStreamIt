@@ -33,6 +33,8 @@ nav li
 
 .best-movie{
   display: flex;
+  justify-content: center;
+  text-align: center;
   }
 
 best-movie h2{

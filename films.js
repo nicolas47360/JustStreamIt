@@ -3,18 +3,23 @@
 const baseUrl = "http://localhost:8000/api/v1/titles/"
 
 
-fetch(baseUrl + '?sort_by=-imdb_score')
+fetch(baseUrl + '?sort_by=-imdb_score' )
     .then(response => response.json())
     .then(data => {
+        const bestFilmData = data.results[0];
+        const id = bestFilmData.id
+
+        fetch(baseUrl + id)
+        .then (response => response.json())
+        .then(dataMovie => {
         const titleBest = document.getElementById("title-best");
         const bestDescription = document.getElementById("best-description");
         const imageBest = document.getElementById("image-best");
-        const bestFilmData = data.results[0];
 
-        titleBest.innerHTML = bestFilm.title;
-        bestDescription.innerHTML = bestFilm.long_description;
-        imageBest.src = bestFilm.image_url;
-        })
+        titleBest.innerHTML = dataMovie.title;
+        bestDescription.innerHTML = dataMovie.long_description;
+        imageBest.src = dataMovie.image_url;
+        })})
 
 function getBestMovies(){
      fetch(baseUrl + '?sort_by=-imdb_score')
@@ -35,7 +40,8 @@ function getId(){
     .then(data => {
         const movies = data.results;
         for( movie of movies){
-        const id = data.id;
+        const id = movie.id;
+        console.log(id)
         return id
         }})
     }
@@ -54,26 +60,24 @@ function getFilmsForCategory(genre) {
         })}
 
 function filmInformation(){
- fetch(baseUrl + '9')
+ fetch(baseUrl + '1508669')
     .then(response => response.json())
     .then(data => {
-        const info = {
-        'Title': data.original_title,
-        'Genres': data.genres,
-        'Release Date': data.date_published,
-        'Rated': data.rated,
-        'IMDB Score': data.imdb_score,
-        'Directors': data.directors,
-        'Actors': data.actors,
-        'Duration': data.duration,
-        'Countries': data.countries,
-        'Box Office': `$ ${data.worldwide_gross_income}`,
-        'Description': data.description,
-        'Long Description': data.long_description};
-        console.log(info);
-        const information = document.getElementById('information')
-        information.innerHTML = info.information
-
+         const information = document.getElementById('information')
+         information.innerHTML = `
+            <img class="modal-img" src="${data.image_url}" alt="" />
+            <p>title: ${data.title}</p>
+            <p>genre: ${data.genres}</p>
+            <p>released: ${data.date_published}</p>
+            <p>vote: ${data.avg_vote}</p>
+            <p>imdb score: ${data.imdb_score}</p>
+            <p>director: ${data.directors}</p>
+            <p>actors: ${data.actors}</p>
+            <p>duration: ${data.duration} min</p>
+            <p>country: ${data.countries}</p>
+            <p>gross income: ${data.worldwide_gross_income}</p>
+            <p>plot: ${data.long_description}</p>
+        `;
         })
 }
 
