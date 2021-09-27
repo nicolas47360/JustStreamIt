@@ -21,19 +21,19 @@
 
     <section>
         <div id="best-imdb">
-            <h1 class="title">meilleur film</h1>
+            <h1 class="title">Meilleur film</h1>
             <div class="best-movie">
-                <img id="image-best" src="#" alt="photo de film">
-                <h2 class="title-best" id="title-best"></h2>
+                <img id="best-image" src="#" alt="photo de film">
+                <h2 class="best-title" id="best-title"></h2>
                 <p id ="best-description"></p>
             </div>
 
-			<a href="#modal" class="js-modal">Description</a>
+			<a href="#modal" class="js-modal" id="btn">Plus d' info</a>
 
             <div id="modal" class="modal" aria-hidden="true" role="dialog">
-				<div class="modal-wrapper js-modal-stop">
+				<div class="modal-wrapper modal-stop">
 					<div id="information"></div>
-				<button class="js-modal-close" >X</button>
+				<button class="modal-close" id="close" >X</button>
 				</div>
 			</div>
 	   </div>
@@ -42,22 +42,28 @@
     <section class="carousel-wrapper">
 					<article class="container">
 						<h1 class="title">Films les mieux notés</h1>
-						<div id="best-score"></div>
+                        <div class="section__arrow left--arrow"></div>
+                &#8592;
+						<div  class="js-modal slide" id="best-score"></div>
+                        <div class="section__arrow right--arrow"></div>
+                &#8594;
 					</article>
 
 					<article class="container">
 						<h1 class="title">Animation</h1>
-						<div id="animation"></div>
+						<div class="js-modal " id="animation"></div>
+                         <div class="section__arrow right--arrow"></div>
+                &#8594;
 					</article>
 
 					<article class="container">
 						<h1 class="title">Thriller</h1>
-						<div id="thriller"></div>
+						<div class="js-modal" id="thriller"></div>
 					</article>
 
 					<article class="container">
 						<h1 class="title">Action</h1>
-						<div id="action"></div>
+						<div class="js-modal" id="action"></div>
 					</article>
 				</section>
 
