@@ -44,7 +44,7 @@ img
 {
  padding: 10px 10px 10px 10px;
  margin: 10px 10px 10px 10px;
- border: solid     #bbc1c1   ;
+ border: solid #bbc1c1;
  border-radius: 10px;
  }
 
@@ -91,7 +91,7 @@ a:link
 
 .js-modal
 {
- border: none;
+ border: solid black 4px;
 }
 
 .modal-wrapper
@@ -102,7 +102,7 @@ a:link
   margin: auto;
   overflow: auto;
   padding: 20px;
-  background-color: white;
+  background-color:  #f7f7f7 ;
   color: black;
 }
 
