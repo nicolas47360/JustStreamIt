@@ -1,7 +1,4 @@
-
-
 const baseUrl = "http://localhost:8000/api/v1/titles/"
-
 
 fetch(baseUrl + '?sort_by=-imdb_score' )
     .then(response => response.json())
@@ -41,7 +38,6 @@ function getBestMovies(page){
             bestMovie.parentNode.insertBefore(leftArrow, bestMovie)
             leftArrow.addEventListener('click', function(e){
             e.preventDefault();
-
             getBestMovies(page -  1)
             })
             }
@@ -53,7 +49,6 @@ function getBestMovies(page){
             bestMovie.parentNode.insertBefore(rightArrow, bestMovie)
             rightArrow.addEventListener('click', function(e){
             e.preventDefault();
-
             getBestMovies(page  + 1)
             })
             }
@@ -98,7 +93,6 @@ function getFilmsForCategory(genre, page) {
             getFilmsForCategory(genre, page  + 1)
             })
             }
-
         for( movie of movies){
             const image = document.createElement('img');
             image.src = movie.image_url;
@@ -106,7 +100,6 @@ function getFilmsForCategory(genre, page) {
             image.addEventListener('click', openModal)
             films.appendChild(image)}
         })}
-
 
 function filmInformation(id){
  fetch(baseUrl + id)
@@ -129,7 +122,6 @@ function filmInformation(id){
         })
 }
 
-
 /* creation de la modale */
 
 let modal = null;
@@ -140,9 +132,7 @@ const openModal = function (e) {
     target.style.display = "block";
     target.removeAttribute('aria-hidden');
     target.setAttribute('aria-modal', 'true');
-
     filmInformation(id)
-
     modal = target;
     modal.addEventListener('click', closeModal);
     modal.querySelector('.modal-close').addEventListener('click', closeModal);
@@ -163,14 +153,12 @@ const stopPropagation = function(e) {
     e.stopPropagation();
     }
 
+document.querySelectorAll('.js-modal img').forEach(a => {
+    a.addEventListener('click', openModal)
+    console.log('text')
+})
 
 getBestMovies(1);
 getFilmsForCategory('animation', 1);
 getFilmsForCategory('thriller', 1);
 getFilmsForCategory('action', 1);
-
-
-document.querySelectorAll('.js-modal img').forEach(a => {
-    a.addEventListener('click', openModal)
-    console.log('text')
-})
