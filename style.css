@@ -29,21 +29,35 @@ section
  border: solid white;
  color: black;
  border-radius: 30px;
- background-color: white;
+ background-color:  white ;
+}
+
+.logo
+{
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+ border: none;
+ border-radius: 0px;
+}
+
+img
+{
+ padding: 10px 10px 10px 10px;
+ margin: 10px 10px 10px 10px;
+ border: solid     #bbc1c1   ;
+ border-radius: 10px;
  }
-
-
 
  nav ul
- {
+{
  display: flex;
  list-style-type: none;
- }
+}
 
 nav li
 {
  margin-right:50px;
- }
+}
 
 a:link
 {
@@ -56,11 +70,12 @@ a:link
  text-align: center;
  font-size: 1.7em;
  vertical-align: top;
-}
+ }
 
  /*
  modal
  */
+
 .modal
 {
   display: none;
@@ -72,6 +87,11 @@ a:link
   background-color: white;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+}
+
+.js-modal
+{
+ border: none;
 }
 
 .modal-wrapper
@@ -91,10 +111,9 @@ a:link
   font-size: 1.2em;
   color: black;
   background-color: transparent;
-  text-decoration: none;
+  display: flex;
   float: right;
  }
-
 
 /*
 carousel */
@@ -102,11 +121,12 @@ carousel */
 .arrow
 {
   color: white;
-  font-size: 60px;
+  font-size: 50px;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
+  color:#ea2735 ;
 }
 
 .right-arrow
@@ -114,7 +134,7 @@ carousel */
  float: right;
  position: relative;
  right: 120px;
- top: 70px;
+ top: 110px;
  }
 
 .left-arrow
@@ -122,6 +142,6 @@ carousel */
  float:left;
  position: relative;
  position: relative;
- left: 20px;
- top: 70px;
- }
+ left: 120px;
+ top: 110px;
+}
