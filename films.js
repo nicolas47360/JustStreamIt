@@ -1,3 +1,5 @@
+
+
 const baseUrl = "http://localhost:8000/api/v1/titles/"
 
 
@@ -15,18 +17,49 @@ fetch(baseUrl + '?sort_by=-imdb_score' )
         titleBest.innerHTML = dataMovie.title;
         bestDescription.innerHTML = dataMovie.long_description;
         imageBest.src = dataMovie.image_url;
+        const btn = document.getElementById('btn')
+        btn.setAttribute("data-filmid", dataMovie.id)
+        btn.addEventListener('click', openModal)
         })})
 
-function getBestMovies(){
-     const bestMovie = document.getElementById('best-score')
-     fetch(baseUrl + '?sort_by=-imdb_score')
+
+function getBestMovies(page){
+    const bestMovie = document.getElementById('best-score')
+     bestMovie.replaceChildren()
+     fetch(baseUrl + '?sort_by=-imdb_score&page_size=4&page=' + page)
     .then(response => response.json())
     .then(data => {
         const movies = data.results;
+        const previous = data.previous;
+         const arrows = document.querySelectorAll('article.main  .arrow')
+        for (arrow of arrows){
+            arrow.remove()}
+        if (previous){
+            const leftArrow = document.createElement('div')
+            leftArrow.className = 'arrow left-arrow'
+            leftArrow.innerHTML = '&laquo;';
+            bestMovie.parentNode.insertBefore(leftArrow, bestMovie)
+            leftArrow.addEventListener('click', function(e){
+            e.preventDefault();
+
+            getBestMovies(page -  1)
+            })
+            }
+        const next = data.next
+        if (next){
+            const rightArrow = document.createElement('div')
+            rightArrow.className = 'arrow right-arrow'
+            rightArrow.innerHTML = '&raquo;';
+            bestMovie.parentNode.insertBefore(rightArrow, bestMovie)
+            rightArrow.addEventListener('click', function(e){
+            e.preventDefault();
+
+            getBestMovies(page  + 1)
+            })
+            }
         for( movie of movies){
         const image = document.createElement('img');
         image.src = movie.image_url;
-        bestMovie.appendChild(image)
         image.setAttribute("data-filmid", movie.id)
         image.addEventListener('click', openModal)
         bestMovie.appendChild(image)
@@ -36,18 +69,44 @@ function getBestMovies(){
 function getFilmsForCategory(genre, page) {
      const films = document.getElementById(genre)
      films.replaceChildren()
-     fetch(baseUrl + '?&genre=' + genre + '&sort_by=-imdb_score&page=' + page)
+     fetch(baseUrl + '?&genre=' + genre + '&sort_by=-imdb_score&page_size=4&page=' + page)
     .then(response => response.json())
     .then(data => {
         const movies = data.results;
+        const previous = data.previous;
+        const arrows = document.querySelectorAll('article.' + genre + ' .arrow')
+        for (arrow of arrows){
+            arrow.remove()}
+        if (previous){
+            const leftArrow = document.createElement('div')
+            leftArrow.className = 'arrow left-arrow'
+            leftArrow.innerHTML = '&laquo;';
+            films.parentNode.insertBefore(leftArrow, films)
+            leftArrow.addEventListener('click', function(e){
+            e.preventDefault();
+            getFilmsForCategory(genre, page - 1)
+            })
+            }
+        const next = data.next
+        if (next){
+            const rightArrow = document.createElement('div')
+            rightArrow.className = 'arrow right-arrow'
+            rightArrow.innerHTML = '&raquo;';
+            films.parentNode.insertBefore(rightArrow, films)
+            rightArrow.addEventListener('click', function(e){
+            e.preventDefault();
+            getFilmsForCategory(genre, page  + 1)
+            })
+            }
+
         for( movie of movies){
-        const image = document.createElement('img');
-        image.src = movie.image_url;
-        image.setAttribute("data-filmid", movie.id)
-        image.addEventListener('click', openModal)
-        films.appendChild(image)
-        }
+            const image = document.createElement('img');
+            image.src = movie.image_url;
+            image.setAttribute("data-filmid", movie.id)
+            image.addEventListener('click', openModal)
+            films.appendChild(image)}
         })}
+
 
 function filmInformation(id){
  fetch(baseUrl + id)
@@ -66,11 +125,13 @@ function filmInformation(id){
             <p>Durée: ${data.duration} min</p>
             <p>Pays: ${data.countries}</p>
             <p>Box office: ${data.worldwide_gross_income}</p>
-            <p>Synopsis: ${data.long_description}</p>
-        `;
+            <p>Synopsis: ${data.long_description}</p>`;
         })
 }
+
+
 /* creation de la modale */
+
 let modal = null;
 const openModal = function (e) {
     e.preventDefault();
@@ -103,11 +164,13 @@ const stopPropagation = function(e) {
     }
 
 
-getBestMovies();
-getFilmsForCategory('animation', "1");
-getFilmsForCategory('thriller', "1");
-getFilmsForCategory('action', "1");
+getBestMovies(1);
+getFilmsForCategory('animation', 1);
+getFilmsForCategory('thriller', 1);
+getFilmsForCategory('action', 1);
+
 
 document.querySelectorAll('.js-modal img').forEach(a => {
     a.addEventListener('click', openModal)
+    console.log('text')
 })
