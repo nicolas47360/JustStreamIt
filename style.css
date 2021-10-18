@@ -28,7 +28,7 @@ section
 {
  border: solid white;
  color: black;
- border-radius: 30px;
+ border-radius: 20px;
  background-color:  white ;
 }
 
@@ -68,8 +68,14 @@ a:link
 .title
 {
  text-align: center;
- font-size: 1.7em;
+ font-size: 2.5em;
  vertical-align: top;
+ font-family: Courier, monospace, Arial, sans-serif;
+ }
+
+.best-movie
+{
+font-family: Courier, monospace, Arial, sans-serif;
  }
 
  /*
@@ -104,11 +110,13 @@ a:link
   padding: 20px;
   background-color:  #f7f7f7 ;
   color: black;
+  font-family: Comic Sans MS,Comic Sans, cursive, Arial, sans-serif;
+  font-size: 25px;
 }
 
 .modal-close
 {
-  font-size: 1.2em;
+  font-size:0.8em;
   color: black;
   background-color: transparent;
   display: flex;
@@ -126,7 +134,7 @@ carousel */
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
-  color:#ea2735 ;
+  color:#ea2735;
 }
 
 .right-arrow
