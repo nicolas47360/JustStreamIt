@@ -23,7 +23,7 @@ fetch(baseUrl + '?sort_by=-imdb_score' )
 function getBestMovies(page){
     const bestMovie = document.getElementById('best-score')
      bestMovie.replaceChildren()
-     fetch(baseUrl + '?sort_by=-imdb_score&page_size=4&page=' + page)
+     fetch(baseUrl + '?sort_by=-imdb_score&page_size=7&page=' + page)
     .then(response => response.json())
     .then(data => {
         const movies = data.results;
@@ -64,7 +64,7 @@ function getBestMovies(page){
 function getFilmsForCategory(genre, page) {
      const films = document.getElementById(genre)
      films.replaceChildren()
-     fetch(baseUrl + '?&genre=' + genre + '&sort_by=-imdb_score&page_size=4&page=' + page)
+     fetch(baseUrl + '?&genre=' + genre + '&sort_by=-imdb_score&page_size=7&page=' + page)
     .then(response => response.json())
     .then(data => {
         const movies = data.results;
